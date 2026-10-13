@@ -37,13 +37,13 @@
     }
   }
 
-  const map = L.map('map', { zoomSnap: 0.5, zoomControl: false }).setView([52.6, -3.2], 4.5);
+  const wide = window.innerWidth > 760;
+  const map = L.map('map', { zoomSnap: 0.5, zoomControl: false });
+  map.fitBounds([[50, -6.5], [58.7, 1.8]], { animate: false, paddingTopLeft: wide ? [420, 20] : [20, 70], paddingBottomRight: wide ? [20, 20] : [20, Math.round(window.innerHeight * 0.52) + 10] });
   L.control.zoom({ position: 'bottomright' }).addTo(map);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
-  const wide = window.innerWidth > 760;
-  map.fitBounds([[50, -6.5], [58.7, 1.8]], { paddingTopLeft: wide ? [420, 20] : [20, 70], paddingBottomRight: wide ? [20, 20] : [20, Math.round(window.innerHeight * 0.52) + 10] });
   const cluster = L.markerClusterGroup({
     showCoverageOnHover: false, maxClusterRadius: 45,
     iconCreateFunction: (c) => {
