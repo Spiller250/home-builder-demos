@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edinburgh in Two Days</title>
+<meta name="description" content="Day-by-day walking route map demo for tour operators. Sample itinerary.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;1,500&family=Alegreya+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="tour.css">
+</head>
+<body>
+<div class="app">
+  <div id="map" class="map" aria-label="Route map"></div>
+  <aside class="guide" id="guide">
+    <header>
+      <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Show or hide the itinerary"></button>
+      <h1>Edinburgh in two days</h1>
+      <p class="byline">A sample walking itinerary made for this demo. <a href="./">Other demos</a></p>
+    </header>
+    <div class="days" id="days" role="tablist"></div>
+    <p class="intro" id="intro"></p>
+    <p class="facts" id="facts"></p>
+    <ol class="timeline" id="timeline"></ol>
+    <p class="fineprint">Lines join the stops directly. On a client site the path can follow streets or a GPX trail.</p>
+    <div class="stepper">
+      <button id="prev" type="button">Previous stop</button>
+      <button id="next" type="button" class="primary">Next stop</button>
+    </div>
+  </aside>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="tour.js"></script>
+</body>
+</html>

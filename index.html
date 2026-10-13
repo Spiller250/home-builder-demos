@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bogdan Shutov, map developer</title>
+<meta name="description" content="Interactive maps for home builders, tour operators and dealer networks, by Bogdan Shutov. Live demos built with Leaflet and JavaScript.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --paper: #f2f4f5;
+    --ink: #17242b;
+    --ink-soft: #56656d;
+    --steel: #2e6a85;
+    --line: #cdd5d9;
+    --focus: #2f7fb5;
+    color: var(--ink);
+    background: var(--paper);
+    font: 17px/1.55 "Golos Text", "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); }
+  a { color: var(--steel); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; padding: 56px 0 40px; }
+  .hero h1 { font-size: clamp(32px, 4.4vw, 50px); line-height: 1.06; letter-spacing: -.025em; font-weight: 700; margin: 0 0 20px; }
+  .hero p { color: var(--ink-soft); margin: 0 0 22px; max-width: 34em; }
+  .who { font-weight: 600; color: var(--ink); margin-bottom: 8px !important; }
+  .actions { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .button { background: var(--ink); color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: 600; }
+  .button:hover { background: var(--steel); }
+
+  .live { margin: 0; }
+  .live iframe { width: 100%; aspect-ratio: 4 / 3; border: 2px solid var(--ink); border-radius: 4px; background: #fff; display: block; }
+  .live figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 10px; }
+
+  h2 { font-size: 28px; letter-spacing: -.015em; margin: 0 0 6px; font-weight: 700; }
+  .lead { color: var(--ink-soft); margin: 0 0 24px; max-width: 40em; }
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+
+  .demos { display: grid; gap: 0; }
+  .demo { display: grid; grid-template-columns: 220px 1fr 200px; gap: 28px; padding: 22px 0; border-top: 1px solid var(--line); align-items: baseline; }
+  .demo:first-child { border-top: 0; padding-top: 4px; }
+  .demo h3 { margin: 0; font-size: 21px; letter-spacing: -.01em; }
+  .demo .for { display: block; font-size: 15px; color: var(--ink-soft); font-weight: 400; margin-top: 2px; }
+  .demo p { margin: 0; }
+  .demo a { font-weight: 600; justify-self: end; }
+
+  .project { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .project dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 20px; font-size: 16px; }
+  .project dt { color: var(--ink-soft); }
+  .project dd { margin: 0; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  td { padding: 14px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:first-child td { border-top: 2px solid var(--ink); }
+  td:last-child { text-align: right; font-weight: 600; white-space: nowrap; padding-left: 20px; font-variant-numeric: tabular-nums; }
+  td small { display: block; color: var(--ink-soft); font-size: 14px; }
+
+  ol.steps { margin: 0; padding-left: 1.4em; max-width: 44em; }
+  ol.steps li { padding: 6px 0 6px 6px; }
+  ol.steps li::marker { font-weight: 700; color: var(--steel); }
+
+  .contact { background: var(--ink); color: #fff; border: 0; border-radius: 6px; padding: 36px; margin: 8px 0 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .contact h2 { color: #fff; }
+  .contact p { margin: 0; color: #c3ced3; max-width: 36em; }
+  .contact .button { background: #fff; color: var(--ink); }
+  footer { color: var(--ink-soft); font-size: 14px; padding-bottom: 40px; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 32px; gap: 28px; }
+    .live iframe { aspect-ratio: 3 / 4; }
+    .demo { grid-template-columns: 1fr; gap: 8px; }
+    .demo a { justify-self: start; }
+    .project { grid-template-columns: 1fr; gap: 20px; }
+    .contact { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <p class="who">Bogdan Shutov, web developer in Kazakhstan</p>
+      <h1>I make maps that sell homesites, plan tours and send customers to the nearest dealer.</h1>
+      <p>Interactive maps and small tools built with JavaScript and Leaflet. They fit into the website you already have, whether that's WordPress, Webflow or something custom.</p>
+      <div class="actions">
+        <a class="button" href="https://www.linkedin.com/in/bogdan-shutov-2732a6371/" rel="noopener">Message me on LinkedIn</a>
+        <a href="#demos">Open the demos</a>
+      </div>
+    </div>
+    <figure class="live">
+      <iframe src="lots.html" title="Live lot map demo" loading="lazy"></iframe>
+      <figcaption>This is the live lot map. Click any homesite. The community and its prices are invented for the demo.</figcaption>
+    </figure>
+  </div>
+
+  <section id="demos">
+    <h2>Three demos for three kinds of client</h2>
+    <p class="lead">Each one is a working page you can click through on a phone or a laptop. They use made-up data, and each looks the way that kind of business would want.</p>
+    <div class="demos">
+      <div class="demo">
+        <h3>Homesite map <span class="for">for home builders</span></h3>
+        <p>Buyers see which lots are available, reserved or sold, filter by phase, price and size, and send a sales rep a link to one lot.</p>
+        <a href="lots.html">Open the lot map</a>
+      </div>
+      <div class="demo">
+        <h3>Route map <span class="for">for tour operators</span></h3>
+        <p>A two-day walking itinerary with a timetable, distances and a stop-by-stop mode for the tour page.</p>
+        <a href="tour.html">Open the route map</a>
+      </div>
+      <div class="demo">
+        <h3>Installer finder <span class="for">for brands with dealers</span></h3>
+        <p>Search by town, filter by service, sort by distance from the visitor, and share a link to a search.</p>
+        <a href="finder.html">Open the finder</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="project">
+      <div>
+        <h2>A real project: Temirtau GIS platform</h2>
+        <p class="lead" style="margin-bottom:16px">A web map of children's playgrounds in Temirtau, built by a small team for local government use. I worked on it as a developer.</p>
+        <p><a href="https://temirtauupcois.vercel.app/" rel="noopener">See the live site</a> &nbsp; or &nbsp; <a href="https://github.com/Spiller250/temirtau-gis-platform" rel="noopener">read the code on GitHub</a></p>
+      </div>
+      <dl>
+        <dt>Map</dt><dd>Leaflet with GeoJSON layers</dd>
+        <dt>Data</dt><dd>Firebase Firestore, photos in Firebase Storage</dd>
+        <dt>Districts</dt><dd>Point-in-polygon check assigns each playground to its district</dd>
+        <dt>Languages</dt><dd>Russian and Kazakh</dd>
+        <dt>Hosting</dt><dd>Vercel</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <h2>What it costs</h2>
+    <p class="lead">Starting prices in US dollars. You get a fixed price before any work begins.</p>
+    <table>
+      <tr><td>A map added to your current website<small>Your locations or areas, popups, works on phones</small></td><td>from $150</td></tr>
+      <tr><td>Tour or trail route map<small>Days, stops, times and distances, or your GPX trails</small></td><td>from $250</td></tr>
+      <tr><td>Homesite map for a community<small>Status, size and price, updated from a spreadsheet</small></td><td>from $300</td></tr>
+      <tr><td>Dealer or location finder<small>Search, filters, nearest-first sorting</small></td><td>from $350</td></tr>
+      <tr><td>Small website, or a fix on an existing one<small>Landing page, contact form, speed or mobile problems</small></td><td>I'll quote after a look</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>How a project goes</h2>
+    <ol class="steps">
+      <li>You send what you have: a site plan PDF, a spreadsheet of addresses or your tour pages.</li>
+      <li>I reply with a fixed price, what's included and a delivery date. One map usually takes 3 to 7 days.</li>
+      <li>You get a private preview link early, so changes happen before the final version.</li>
+      <li>I install it on your site or hand over the files, and show you how to update the data yourself.</li>
+    </ol>
+  </section>
+
+  <div class="contact">
+    <div>
+      <h2>Have a site plan or a list of locations?</h2>
+      <p>Send it over and I'll tell you what the map would look like, what it costs and when it can be ready.</p>
+    </div>
+    <a class="button" href="https://www.linkedin.com/in/bogdan-shutov-2732a6371/" rel="noopener">Message me on LinkedIn</a>
+  </div>
+</main>
+<footer class="wrap">© 2026 Bogdan Shutov. Demo data is invented, except the sample Edinburgh itinerary. Map data © OpenStreetMap contributors.</footer>
+</body>
+</html>

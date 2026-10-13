@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Willow Creek Estates · Homesites</title>
+<meta name="description" content="Interactive lot map demo for home builders. The community, lots and prices are fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="lots.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">Willow Creek Estates <small>Homesite map</small></div>
+  <div class="right">
+    <span class="demo-note">Fictional community, built as a demo</span>
+    <a href="./">Back to all demos</a>
+  </div>
+</header>
+<div class="app">
+  <aside class="side" id="side">
+    <button class="mobile-toggle" id="mobileToggle" type="button">Filters and homesites</button>
+    <div class="block"><div class="stats" id="stats"></div></div>
+    <div class="block">
+      <h2>Find a homesite</h2>
+      <div class="chips" id="statusChips"></div>
+      <div class="field">
+        <label for="phase">Phase</label>
+        <select id="phase">
+          <option value="">All phases</option>
+          <option value="1">Phase 1, Willow Creek Dr</option>
+          <option value="2">Phase 2, Aspen Ct</option>
+          <option value="3">Phase 3, Birch Ct</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="maxPrice"><span>Up to</span><span id="maxPriceOut"></span></label>
+        <input type="range" id="maxPrice" step="5000">
+      </div>
+      <div class="field">
+        <label for="minSize"><span>At least</span><span id="minSizeOut"></span></label>
+        <input type="range" id="minSize" step="250">
+      </div>
+    </div>
+    <ul class="list" id="list"></ul>
+  </aside>
+  <div id="map" class="map" aria-label="Site plan"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="lots.js"></script>
+</body>
+</html>

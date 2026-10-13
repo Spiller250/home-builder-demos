@@ -1,0 +1,115 @@
+/* Willow Creek Estates: drawn like a surveyor's plat. Condensed signage type, ink lines, hatched sold lots. */
+:root {
+  --paper: #f3f5f2;
+  --paper-2: #e6ebe4;
+  --ink: #25333b;
+  --ink-soft: #5d6b70;
+  --line: #c9d0cb;
+  --available: #5b9a4f;
+  --reserved: #dda43a;
+  --sold: #25333b;
+  --focus: #2f7fb5;
+  color: var(--ink);
+  background: var(--paper);
+  font: 15px/1.45 Barlow, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--paper); }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.topbar {
+  height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 0 20px; border-bottom: 2px solid var(--ink); background: var(--paper);
+}
+.brand { font: 600 26px/1 "Barlow Condensed", sans-serif; letter-spacing: .01em; }
+.brand small { font: 500 15px Barlow, sans-serif; color: var(--ink-soft); margin-left: 10px; letter-spacing: 0; }
+.topbar .right { display: flex; gap: 14px; align-items: center; font-size: 14px; }
+.topbar a { color: var(--ink); }
+.demo-note { color: var(--ink-soft); font-size: 13px; }
+
+.app { display: grid; grid-template-columns: 360px 1fr; height: calc(100% - 64px); }
+.side { border-right: 2px solid var(--ink); background: #fff; overflow: auto; display: flex; flex-direction: column; }
+.block { padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.block h2 { font: 600 19px "Barlow Condensed", sans-serif; margin: 0 0 12px; }
+.map { height: 100%; background: var(--paper-2); }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.stats div { font-size: 13px; color: var(--ink-soft); }
+.stats b { display: block; font: 600 30px/1 "Barlow Condensed", sans-serif; color: var(--ink); }
+
+.chips { display: flex; gap: 14px; flex-wrap: wrap; }
+.chip { border: 0; background: none; padding: 2px 0; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; font-size: 15px; }
+.chip .dot { width: 16px; height: 16px; border: 1.5px solid var(--ink); display: inline-block; }
+.chip[aria-pressed="false"] { color: var(--ink-soft); text-decoration: line-through; }
+.chip[aria-pressed="false"] .dot { opacity: .25; }
+.dot.sold, .chip .dot.sold { background: repeating-linear-gradient(45deg, var(--ink) 0 1.5px, #fff 1.5px 5px); }
+
+.field { display: grid; gap: 4px; margin-top: 14px; font-size: 14px; }
+.field label { display: flex; justify-content: space-between; color: var(--ink-soft); }
+.field label span:last-child { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.field input[type=range] { width: 100%; accent-color: var(--ink); }
+.field select { padding: 7px 8px; border: 1.5px solid var(--ink); border-radius: 0; background: #fff; }
+
+.list { list-style: none; margin: 0; padding: 0; }
+.list li {
+  display: grid; grid-template-columns: 52px 1fr auto; gap: 10px; align-items: center;
+  padding: 9px 20px; border-bottom: 1px solid var(--line); cursor: pointer;
+}
+.list li:hover { background: var(--paper); }
+.list li.active { background: #fff6dd; box-shadow: inset 4px 0 0 var(--ink); }
+.lotno { font: 600 24px/1 "Barlow Condensed", sans-serif; display: flex; align-items: center; gap: 6px; }
+.lotno .dot { width: 10px; height: 10px; border: 1px solid var(--ink); }
+.sub { color: var(--ink-soft); font-size: 13px; }
+.price { font: 600 18px "Barlow Condensed", sans-serif; font-variant-numeric: tabular-nums; }
+.price.muted { color: var(--ink-soft); font-weight: 500; }
+.empty { padding: 20px; color: var(--ink-soft); display: block !important; }
+
+.btn { background: var(--ink); color: #fff; border: 1.5px solid var(--ink); padding: 7px 12px; cursor: pointer; font-weight: 600; }
+.btn.ghost { background: #fff; color: var(--ink); }
+.btn:disabled { opacity: .4; cursor: default; }
+
+.leaflet-container { font: inherit; }
+.leaflet-popup-content-wrapper { border-radius: 2px; border: 1.5px solid var(--ink); box-shadow: 4px 4px 0 rgba(37, 51, 59, .18); }
+.leaflet-popup-tip { border: 1.5px solid var(--ink); }
+.leaflet-popup-content { margin: 14px 16px; min-width: 220px; font-size: 14px; }
+.leaflet-popup-content h3 { font: 600 26px/1 "Barlow Condensed", sans-serif; margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+.status { font: 500 14px Barlow, sans-serif; padding: 1px 7px; border: 1.5px solid var(--ink); }
+.status.available { background: var(--available); color: #fff; border-color: var(--available); }
+.status.reserved { background: var(--reserved); }
+.status.sold { background: #fff; }
+.pop-row { display: flex; justify-content: space-between; gap: 16px; padding: 2px 0; border-bottom: 1px dotted var(--line); }
+.pop-row span:first-child { color: var(--ink-soft); }
+.pop-msg { margin-top: 8px; color: var(--ink-soft); font-size: 13px; }
+
+.leaflet-tooltip.plan-label, .leaflet-tooltip.lot-num { background: none; border: 0; box-shadow: none; padding: 0; }
+.leaflet-tooltip.plan-label::before, .leaflet-tooltip.lot-num::before { display: none; }
+.leaflet-tooltip.plan-label { font: italic 500 14px Barlow, sans-serif; color: #3e5a3a; }
+.leaflet-tooltip.lot-num { font: 600 13px "Barlow Condensed", sans-serif; color: var(--ink); pointer-events: none; }
+.hide-nums .leaflet-tooltip.lot-num { display: none; }
+.street-label span, .entry-label span { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; }
+.street-label span { font: 600 13px "Barlow Condensed", sans-serif; letter-spacing: .12em; color: var(--ink-soft); background: #fff; padding: 0 4px; }
+.entry-label span { font: 600 14px "Barlow Condensed", sans-serif; transform: translate(0, -170%); }
+
+.plat-legend { background: #fff; border: 1.5px solid var(--ink); padding: 10px 12px; font-size: 13px; display: grid; gap: 6px; }
+.plat-legend .dot { width: 16px; height: 12px; border: 1px solid var(--ink); display: inline-block; vertical-align: -1px; margin-right: 6px; }
+.north { width: 46px; text-align: center; font: 600 14px "Barlow Condensed", sans-serif; }
+.north svg { display: block; margin: 0 auto 2px; }
+.scalebar { font: 500 12px Barlow, sans-serif; color: var(--ink); }
+.scalebar .bar { height: 6px; border: 1.5px solid var(--ink); background: linear-gradient(90deg, var(--ink) 50%, #fff 50%); margin-bottom: 2px; }
+
+.mobile-toggle { display: none; }
+@media (max-width: 760px) {
+  .topbar { height: auto; padding: 10px 16px; flex-wrap: wrap; gap: 4px 12px; }
+  .brand { font-size: 22px; }
+  .brand small, .demo-note { display: none; }
+  .app { grid-template-columns: 1fr; height: calc(100% - 46px); position: relative; }
+  .side {
+    position: absolute; inset: auto 0 0 0; max-height: 60%; z-index: 1000; border: 0; border-top: 2px solid var(--ink);
+    transform: translateY(calc(100% - 48px)); transition: transform .25s;
+  }
+  .side.open { transform: none; }
+  .mobile-toggle { display: block; width: 100%; padding: 13px; border: 0; border-bottom: 1px solid var(--line); background: #fff; font-weight: 600; position: sticky; top: 0; z-index: 2; }
+  .app .leaflet-bottom { bottom: 50px; }
+}
+@media (prefers-reduced-motion: reduce) { .side { transition: none; } }

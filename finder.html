@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brightroof Installer Finder</title>
+<meta name="description" content="Dealer and installer locator map demo with search, filters and distance sorting. Brightroof is a fictional brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
+<link rel="stylesheet" href="finder.css">
+</head>
+<body>
+<div id="map" aria-label="Installer map"></div>
+<div class="demo-flag">Brightroof is a made-up brand. <a href="./">Other demos</a></div>
+<section class="panel" id="panel" aria-label="Find an installer">
+  <div class="panel-head">
+    <div class="logo">
+      <svg width="30" height="26" viewBox="0 0 30 26" aria-hidden="true"><path d="M2 13 L15 2 L28 13" fill="none" stroke="#ffc633" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><rect x="7" y="13" width="16" height="11" rx="1" fill="#fff"/></svg>
+      Brightroof
+      <button class="mobile-toggle" id="mobileToggle" type="button">Hide list</button>
+    </div>
+    <p>Solar panels, batteries and car chargers, fitted by certified local installers.</p>
+    <form class="search" id="searchForm" role="search">
+      <input type="search" id="q" placeholder="Your town or postcode area" autocomplete="off" aria-label="Town or installer name">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <div class="filters">
+    <div class="chips" id="svcChips" aria-label="Services"></div>
+    <div class="toggles">
+      <button class="linkish" id="near" type="button">Use my location</button>
+      <label><input type="checkbox" id="inView"> Only what's on the map</label>
+    </div>
+    <div id="nearMsg"></div>
+  </div>
+  <div class="count" id="stats"></div>
+  <ul class="list" id="list"></ul>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<script src="finder.js"></script>
+</body>
+</html>
